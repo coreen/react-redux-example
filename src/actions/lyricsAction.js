@@ -5,13 +5,15 @@ import axios from 'axios'
 // async call to complete before sending to reducer
 export function getLyrics(song) {
 	// parse the song input to url encode, replace all <space> with "%20"
-	const title = song.title.replace(' ', '%20')
-	const artist = song.artist.repalce(' ', '%20')
+	// Resource: https://stackoverflow.com/questions/1144783/how-to-replace-all-occurrences-of-a-string-in-javascript
+	// const title = song.title.split(' ').join('%20')
+	// const artist = song.artist.split(' ').join('%20')
 	// async/await: way to wait for async calls to complete without .then() syntax
-	return async dispatch => {
+	return async (dispatch) => {
 		// template string in ES6, used for easy string concatenation
 		// Resource: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
-		const apiResponse = await axios.get(`http://lyric-api.herokuapp.com/api/find/${artist}/${title}`)
+		const url = encodeURI(`http://lyric-api.herokuapp.com/api/find/${song.artist}/${song.title}`)
+		const apiResponse = await axios.get(url)
 		/*
 		 * apiResponse = {
 	     *    data: {
@@ -20,7 +22,8 @@ export function getLyrics(song) {
 	     *    }
 		 * }
 		 */
-		dispatch(setLyrics(apiResponse.data.lyric))
+	console.log(apiResponse.data.lyric)
+		return dispatch(setLyrics(apiResponse.data.lyric))
 	}
 }
 

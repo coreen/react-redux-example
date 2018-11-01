@@ -1,16 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { removeSong } from '../actions'
+import {
+	removeSong,
+	getLyrics
+} from '../actions'
 
 class SongList extends Component {
 	render() {
-		const { songList, removeSong } = this.props
+		const {
+			songList,
+			removeSong,
+			lyrics,
+			getLyrics
+		} = this.props
 
 		const songs = songList.map((song, i) => {
 			console.log('song',song,'index',i)
 			return (
 			<li className="song" key={ i }>
 				{ `${song.title}, by ${song.artist}` }
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				<i onClick={ () => getLyrics(song) }>
+					Click for lyrics
+				</i>
 			</li>
 		)})
 
@@ -24,6 +38,8 @@ class SongList extends Component {
 				>
 					Click text to remove first song from list
 				</i>
+				<h3>Lyrics</h3>
+				{ lyrics }
 			</div>
 		)
 	}
@@ -32,7 +48,8 @@ class SongList extends Component {
 // maps this.props.songList to this.state
 function mapStateToProps(state) {
 	return {
-		songList: state.songList
+		songList: state.songList,
+		lyrics: state.lyrics
 	}
 }
 
@@ -41,7 +58,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	// binds all dispatch operations to a single location instead of inline within component
 	return {
-		removeSong: (song) => dispatch(removeSong(song))
+		removeSong: (song) => dispatch(removeSong(song)),
+		getLyrics: (song) => dispatch(getLyrics(song))
 	}
 }
 

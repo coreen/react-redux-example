@@ -10,7 +10,7 @@ Simple React/Redux application showing a boilerplate for formatting the 3 main c
 ## Data Flow
 
 Redux is an implementation of Flux, which is an idea of a single source of truth for an app's data. As a result, the following diagram represents the data flow of a Redux app.
-
+```
      ___
     /   \ 
    / API \
@@ -36,6 +36,7 @@ Redux is an implementation of Flux, which is an idea of a single source of truth
 |component|
 |         |
  --------- 
+```
 
 The square icons are writen within the app itself. The triangle is an external resource.
 
@@ -62,8 +63,8 @@ Contributors, feel free to pick from this list and implement a pull request.
 
 Users, feel free to create pull requests adding to this list as you go through the codebase.
 
-[ ] Move Redux connection info into a separate higher `container` type
+- [ ] Move Redux connection info into a separate higher `container` type
    * containers => handle connecting component to Redux
    * component  => only handle UI
-[ ] Restructure app so state (ie. actions and reducers) is grouped together
+- [ ] Restructure app so state (ie. actions and reducers) is grouped together
 
