@@ -57,7 +57,7 @@ This will automatically build the app and start running. Your default web browse
 
 ## Developer Notes
 
-*Warning:* These are notes for creator to improve this example. If you're learning React/Redux, feel free to ignore.
+**Warning:** These are notes for creator to improve this example. If you're learning React/Redux, feel free to ignore.
 
 Contributors, feel free to pick from this list and implement a pull request.
 
